@@ -23,7 +23,7 @@ func NewBellRoutes(r *mux.Router, bell service.Bell) {
 
 	ctrl := newBellController(bell)
 
-	//Вызвайть лишь единожды. Иначе сущностей будет слишком много. Начинает программу.
+	//Вызвать лишь единожды. Иначе сущностей будет слишком много. Начинает программу.
 	r.HandleFunc("/set", ctrl.set).Methods(http.MethodGet)
 
 	//Отдает все сущности, сколько бы их там не было.
