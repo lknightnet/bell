@@ -3,6 +3,7 @@ package config
 import (
 	"github.com/ilyakaznacheev/cleanenv"
 	"github.com/pkg/errors"
+	"time"
 )
 
 type (
@@ -17,12 +18,14 @@ type (
 		Name string `yaml:"name" env:"APP_NAME"`
 	}
 	HTTP struct {
-		Port string `yaml:"port" env:"HTTP_PORT"`
+		Port            string        `yaml:"port" env:"HTTP_PORT"`
+		ReadTimeout     time.Duration `json:"read_timeout" env:"HTTP_READ_TIMEOUT"`
+		WriteTimeout    time.Duration `json:"write_timeout" env:"HTTP_WRITE_TIMEOUT"`
+		ShutdownTimeout time.Duration `json:"shutdown_timeout" env:"HTTP_SHUTDOWN_TIMEOUT"`
 	}
 
 	API struct {
-		UrlAPI     string `yaml:"url_api" env:"API_URL"`
-		ServiceSHD string `yaml:"service_shd" env:"API_SERVICE_SHD"`
+		UrlAPI string `yaml:"url_api" env:"API_URL"`
 	}
 
 	PG struct {

@@ -3,8 +3,8 @@ build:
 	docker compose up --build
 
 remove:
-	docker stop bell-service-postgres-1
-	docker stop bell-service-server-1
-	docker rm bell-service-postgres-1
-	docker rm bell-service-server-1
+	docker stop bell-postgres-1
+	docker stop bell-server-1
+	docker rm bell-postgres-1
+	docker rm bell-server-1
 

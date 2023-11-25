@@ -35,7 +35,8 @@ func Run(cfg *config.Config) {
 
 	rout := mux.NewRouter()
 	http.NewBellRoutes(rout, services.B)
-	srv := server.NewServer(rout, server.Port(cfg.HTTP.Port))
+	srv := server.NewServer(rout, server.Port(cfg.HTTP.Port), server.ReadTimeout(cfg.ReadTimeout),
+		server.WriteTimeout(cfg.WriteTimeout), server.ShutdownTimeout(cfg.ShutdownTimeout))
 
 	interrupt := make(chan os.Signal, 1)
 	signal.Notify(interrupt, os.Interrupt, os.Kill, syscall.SIGTERM)

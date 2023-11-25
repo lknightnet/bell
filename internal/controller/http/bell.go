@@ -27,15 +27,15 @@ func NewBellRoutes(r *mux.Router, bell service.Bell) {
 	r.HandleFunc("/set", ctrl.set).Methods(http.MethodGet)
 
 	//Отдает все сущности, сколько бы их там не было.
-	r.HandleFunc("get/all", ctrl.getAll).Methods(http.MethodGet)
+	r.HandleFunc("/get/all", ctrl.getAll).Methods(http.MethodGet)
 	//Отдает только одну сущность, ID, которой было написано.
-	r.HandleFunc("get/{id:[0-9]+}", ctrl.getByID).Methods(http.MethodGet)
+	r.HandleFunc("/get/{id:[0-9]+}", ctrl.getByID).Methods(http.MethodGet)
 
 	//Обновляет одну сущность, ID, которой было написано.
-	r.HandleFunc("update/{id:[0-9]+}", ctrl.update).Methods(http.MethodPost)
+	r.HandleFunc("/update/{id:[0-9]+}", ctrl.update).Methods(http.MethodPost)
 
 	//Удаляет одну сущность, ID, которой было написано.
-	r.HandleFunc("remove/{id:[0-9]+}", ctrl.remove).Methods(http.MethodPost)
+	r.HandleFunc("/remove/{id:[0-9]+}", ctrl.remove).Methods(http.MethodPost)
 }
 
 func (b *bellController) set(w http.ResponseWriter, r *http.Request) {
